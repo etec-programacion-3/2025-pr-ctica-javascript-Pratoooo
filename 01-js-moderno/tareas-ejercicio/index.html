@@ -7,11 +7,22 @@
 </head>
 <body>
   <h1>Mini sistema de tareas (Ejercicio)</h1>
+
   <form id="task-form">
     <input type="text" id="task-input" placeholder="Nueva tarea" required />
     <button type="submit">Agregar</button>
   </form>
+
+  <!-- Selector de filtro -->
+  <label for="task-filter">Filtrar tareas:</label>
+  <select id="task-filter">
+    <option value="todas">Todas</option>
+    <option value="completadas">Completadas</option>
+    <option value="pendientes">Pendientes</option>
+  </select>
+
   <ul id="task-list"></ul>
+
   <script type="module" src="main.js"></script>
 </body>
-</html> 
+</html>

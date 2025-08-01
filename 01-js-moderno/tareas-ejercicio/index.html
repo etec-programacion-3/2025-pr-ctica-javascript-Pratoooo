@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mini sistema de tareas (Ejercicio)</title>
+  <meta charset="UTF-8" />
+  <title>Mini sistema de tareas</title>
 </head>
 <body>
+<<<<<<< HEAD
   <h1>Mini sistema de tareas (Ejercicio)</h1>
+
   <form id="task-form">
     <input type="text" id="task-input" placeholder="Nueva tarea" required />
     <button type="submit">Agregar</button>
   </form>
+
+  <!-- Selector de filtro -->
+  <label for="task-filter">Filtrar tareas:</label>
+  <select id="task-filter">
+=======
+  <h1>Mis tareas</h1>
+
+  <form id="formulario">
+    <input type="text" id="nueva-tarea" placeholder="Nueva tarea..." required />
+    <button type="submit">Agregar</button>
+  </form>
+
+  <select id="filtro">
+>>>>>>> 6dffdd9 (Entrega Trabajo)
+    <option value="todas">Todas</option>
+    <option value="completadas">Completadas</option>
+    <option value="pendientes">Pendientes</option>
+  </select>
+
+<<<<<<< HEAD
   <ul id="task-list"></ul>
+
   <script type="module" src="main.js"></script>
+=======
+  <ul id="lista-tareas"></ul>
+
+  <script type="module" src="./main.js"></script>
+>>>>>>> 6dffdd9 (Entrega Trabajo)
 </body>
-</html> 
+</html>

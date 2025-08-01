@@ -1,3 +1,7 @@
+Nombre estudiante: Pablo Prato 5°I
+
+
+
 # JS Vanilla Avanzado: Consolidación antes de React
 
 Este proyecto está diseñado para que consolides tus conocimientos de JavaScript moderno, consumo de APIs, manipulación del DOM, enrutamiento, patrones de diseño frontend y herramientas modernas antes de dar el salto a React.

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {
   getTasks,
   addTask,
@@ -78,3 +79,100 @@ filter.onchange = () => renderTasks();
 
 // Render inicial
 renderTasks();
+=======
+// Lista inicial de tareas
+let tareas = [
+  { id: 1, titulo: "Aprender JS", completada: false },
+  { id: 2, titulo: "Practicar React", completada: true },
+];
+
+// Elementos del DOM
+const listaTareas = document.getElementById("lista-tareas");
+const form = document.getElementById("formulario");
+const inputTarea = document.getElementById("nueva-tarea");
+const filtro = document.getElementById("filtro");
+
+// Renderizar tareas (con destructuring)
+function renderTareas(lista = tareas) {
+  listaTareas.innerHTML = "";
+
+  lista.forEach(({ id, titulo, completada }) => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <input type="checkbox" class="check" data-id="${id}" ${completada ? "checked" : ""}>
+      <span ${completada ? 'style="text-decoration: line-through;"' : ""}>${titulo}</span>
+      <button class="editar" data-id="${id}">✏️</button>
+      <button class="eliminar" data-id="${id}">🗑️</button>
+    `;
+    listaTareas.appendChild(li);
+  });
+}
+
+// Agregar nueva tarea
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const titulo = inputTarea.value.trim();
+  if (titulo) {
+    tareas.push({
+      id: Date.now(),
+      titulo,
+      completada: false,
+    });
+    inputTarea.value = "";
+    renderTareasFiltradas();
+  }
+});
+
+// Eliminar tarea
+listaTareas.addEventListener("click", (e) => {
+  if (e.target.classList.contains("eliminar")) {
+    const id = Number(e.target.dataset.id);
+    tareas = tareas.filter((tarea) => tarea.id !== id);
+    renderTareasFiltradas();
+  }
+});
+
+// Editar tarea (Ejercicio 1)
+listaTareas.addEventListener("click", (e) => {
+  if (e.target.classList.contains("editar")) {
+    const id = Number(e.target.dataset.id);
+    const nueva = prompt("Nuevo nombre:");
+    if (nueva?.trim()) {
+      tareas = tareas.map((tarea) =>
+        tarea.id === id ? { ...tarea, titulo: nueva } : tarea
+      );
+      renderTareasFiltradas();
+    }
+  }
+});
+
+// Completar tarea
+listaTareas.addEventListener("change", (e) => {
+  if (e.target.classList.contains("check")) {
+    const id = Number(e.target.dataset.id);
+    tareas = tareas.map((tarea) =>
+      tarea.id === id ? { ...tarea, completada: !tarea.completada } : tarea
+    );
+    renderTareasFiltradas();
+  }
+});
+
+// Filtrar tareas (Ejercicio 2)
+filtro.addEventListener("change", () => {
+  renderTareasFiltradas();
+});
+
+function renderTareasFiltradas() {
+  const tipo = filtro.value;
+  if (tipo === "completadas") {
+    renderTareas(tareas.filter((t) => t.completada));
+  } else if (tipo === "pendientes") {
+    renderTareas(tareas.filter((t) => !t.completada));
+  } else {
+    renderTareas(tareas);
+  }
+}
+
+// Render inicial
+renderTareas();
+>>>>>>> 6dffdd9 (Entrega Trabajo)
